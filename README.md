@@ -7,6 +7,38 @@ A very basic audit trail for Node.js that writes to log files only, and support 
 
 ## Usage
 
+Plain audit trail:
+```js
+var audit = require('./audit');
+audit.filename('./log/audit.log'); // must set location of audit log file
+
+audit.info('Hello World!'); // audit as level 'info'
+audit.info({json:'object', to:'stringfy'}); // objects are stringify'd in audit message
+
+audit.error('An error occurred'); // audit as level 'error'
+audit.error({err:'404', text:'File not found!'});
+```
+
+Callback audit trail:
+```js
+// audit by intercepting a callback
+someApiCall(p1, p2, audit.intercept(callback, p2));
+```
+
+In the above, ``callback`` must support an error parameter as its first argument:
+```js
+callback = function(err, p1, p2, ... pN){
+   ...
+}
+```
+
+`intercept()` takes a message as second argument, and optionally a scope for the `callback`
+```js
+audit.intercept(callback, message[, scope])
+```
+
+The `message` is only included in audit trail if originating call completed successfully.
+On failure, the error argument to `callback` is audited instead.
 
 
 ##License
