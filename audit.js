@@ -1,3 +1,9 @@
+/*!
+* basic-audit-trail
+* Copyright (c) 2013 Leonard Wu <leonard.wu92@imperial.ac.uk>
+* MIT Licensed
+*/
+
 var _ = require('underscore'),
 	winston = require('winston');
 
