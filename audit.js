@@ -9,8 +9,8 @@ var _ = require('underscore'),
 
 //enable daily rotation of log file
 winston.add(winston.transports.DailyRotateFile, {
-  filename: './log/audit.log',
-  datePattern: '.yyyy-MM-dd'
+	filename: './log/audit.log',
+	datePattern: '.yyyy-MM-dd'
 });
 // disable log to stdout
 winston.remove(winston.transports.Console);
