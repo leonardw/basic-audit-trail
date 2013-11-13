@@ -15,13 +15,25 @@ winston.add(winston.transports.DailyRotateFile, {
 // disable log to stdout
 winston.remove(winston.transports.Console);
 
+function audit(logFn, msg) {
+	logFn(_.isObject(msg)? JSON.stringify(msg) : msg);
+}
+
+function error(msg) {
+	audit(winston.error, msg);
+}
+
+function info(msg) {
+	audit(winston.info, msg);
+}
+
 function intercept(callbk, successMsg, scope) {
 	return function(){
 		var err = arguments[0];
 		if (err) {
-			winston.error(err);
+			error(err);
 		} else {
-			winston.info(_.isObject(successMsg)? JSON.stringify(successMsg) : successMsg);
+			info(_.isObject(successMsg)? JSON.stringify(successMsg) : successMsg);
 		}
 		if (_.isFunction(callbk)) {
 			callbk.apply(scope || this, arguments);
@@ -30,5 +42,5 @@ function intercept(callbk, successMsg, scope) {
 }
 
 exports.intercept = intercept;
-exports.error = winston.error;
-exports.info = winston.info;
+exports.error = error;
+exports.info = info;
