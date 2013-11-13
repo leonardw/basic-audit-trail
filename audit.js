@@ -4,16 +4,20 @@
 * MIT Licensed
 */
 
-var _ = require('underscore'),
+var _ = require('lodash'),
 	winston = require('winston');
 
-//enable daily rotation of log file
-winston.add(winston.transports.DailyRotateFile, {
-	filename: './log/audit.log',
-	datePattern: '.yyyy-MM-dd'
-});
-// disable log to stdout
-winston.remove(winston.transports.Console);
+function filename(f) {
+	var fname = f || './audit.log';
+	console.info('Audit filename set to ' + fname);
+	//enable daily rotation of log file
+	winston.add(winston.transports.DailyRotateFile, {
+		filename: fname,
+		datePattern: '.yyyy-MM-dd'
+	});
+	// disable log to stdout
+	winston.remove(winston.transports.Console);
+}
 
 function audit(logFn, msg) {
 	logFn(_.isObject(msg)? JSON.stringify(msg) : msg);
@@ -41,6 +45,7 @@ function intercept(callbk, successMsg, scope) {
 	};
 }
 
+exports.filename = filename;
 exports.intercept = intercept;
 exports.error = error;
 exports.info = info;
