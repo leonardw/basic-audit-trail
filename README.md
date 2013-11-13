@@ -2,6 +2,7 @@
 
 # basic-audit-trail
 
+A very basic audit trail for Node.js that writes to log files only, and support daily rotation of log files.
 
 
 ## Usage

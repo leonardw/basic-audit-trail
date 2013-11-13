@@ -1,0 +1,18 @@
+{
+  "name": "basic-audit-trail",
+  "version": "0.0.1",
+  "description": "basic-audit-trail",
+  "repository": "https://github.com/leonardw/basic-audit-trail.git",
+  "dependencies": {
+    "underscore": "1.5.2",
+    "winston": "0.7.2"
+  },
+  "keywords": [
+    "Node.js",
+    "Audit",
+    "Log"
+  ],
+  "author": "",
+  "license": "MIT",
+  "readmeFilename": "README.md"
+}
