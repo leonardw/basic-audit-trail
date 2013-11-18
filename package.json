@@ -1,7 +1,7 @@
 {
   "name": "basic-audit-trail",
   "version": "0.0.1",
-  "description": "basic-audit-trail",
+  "description": "A very basic audit trail for Node.js that writes to log files only, and supports daily rotation of log files",
   "repository": "https://github.com/leonardw/basic-audit-trail.git",
   "dependencies": {
     "lodash": "2.3.0",
@@ -12,7 +12,7 @@
     "Audit",
     "Log"
   ],
-  "author": "",
+  "author": "Leonard Wu",
   "license": "MIT",
   "readmeFilename": "README.md"
 }
