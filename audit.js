@@ -1,6 +1,7 @@
 /*!
 * basic-audit-trail
 * Copyright (c) 2013 Leonard Wu <leonard.wu92@imperial.ac.uk>
+* https://github.com/leonardw/basic-audit-trail
 * MIT Licensed
 */
 
